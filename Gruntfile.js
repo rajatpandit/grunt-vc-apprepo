@@ -29,23 +29,15 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    vc_apprepo: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      },
-      custom_options: {
-        options: {
-          separator: ': ',
-          punctuation: ' !!!'
-        },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
-      }
+    apprepo            : {
+       options         : {
+           http_url    : 'http://dc.ios.localhost/',
+           repo_path   : '/home/rp/repo-generator/repo-generator',
+           output_path : '/var/www/apps/',
+           branch      : 'master',
+           app_name    : 'Digital Club Card',
+           bundle_id   : 'com.geo.bla',
+       },
     },
 
     // Unit tests.
@@ -65,7 +57,7 @@ module.exports = function(grunt) {
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'vc_apprepo', 'nodeunit']);
+  grunt.registerTask('test', ['clean', 'apprepo', 'nodeunit']);
 
   // By default, lint and run all tests.
   grunt.registerTask('default', ['jshint', 'test']);
