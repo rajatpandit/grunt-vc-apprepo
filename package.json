@@ -1,0 +1,42 @@
+{
+  "name": "grunt-vc-apprepo",
+  "description": "Plugin to create landing page for ios and android apps and push it to a remote server",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rajatpandit/grunt-vc-apprepo",
+  "author": {
+    "name": "Rajat Pandit",
+    "email": "rp@rajatpandit.com",
+    "url": "http://rajatpandit.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:rajatpandit/grunt-vc-apprepo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rajatpandit/grunt-vc-apprepo/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/rajatpandit/grunt-vc-apprepo/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.4"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.4"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
