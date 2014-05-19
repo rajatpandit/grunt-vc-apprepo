@@ -35,6 +35,14 @@ module.exports = function(grunt) {
                 };
                 logs.push(single_commit);
             });
+            if (logs.length){
+                grunt.log.writeln('Found the following change logs');
+                grunt.log.writeln('---');
+                logs.forEach(function(log) {
+                    grunt.log.writeln("%s - %s (%s)", log.hash.substr(0,5), log.msg, log.author);
+                });
+                grunt.log.writeln('---');
+            }
             return logs;
         };
 
@@ -49,7 +57,9 @@ module.exports = function(grunt) {
     }, function(logs, callback) {
             var template_path     = __dirname + '/../templates/',
                 html_template     = template_path + 'index.html.ejs',
-                manifest_template = template_path + 'manifest.plist.ejs';
+                html_file         = options['output_path'] + 'index.html',
+                manifest_template = template_path + 'manifest.plist.ejs',
+                manifest_file     = options['output_path'] + 'manifest.plist';
 
             // get parse the output of the manifest
             var manifest_output = ejs.render(fs.readFileSync(manifest_template, 'utf-8'), {
@@ -62,7 +72,20 @@ module.exports = function(grunt) {
                 build_id: build_id,
                 logs: logs
             });
-
+            fs.writeFile(html_file, html_output, function(err) {
+                if (err) {
+                    grunt.log.writeln('Error writing to %s', html_file);
+                } else {
+                    grunt.log.writeln('Wrote updated landing page at %s', html_file);
+                }
+            });
+            fs.writeFile(manifest_file, manifest_output, function(err) {
+                if (err) {
+                    grunt.log.writeln('Error writing to %s', manifest_file);
+                } else {
+                    grunt.log.writeln('Wrote updated manifest file at %s', manifest_file);
+                }
+            });
     }]);
 
     });
