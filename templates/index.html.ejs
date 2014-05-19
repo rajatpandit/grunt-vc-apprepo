@@ -28,22 +28,19 @@
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
-                <h3>
-                    h3. Lorem ipsum dolor sit amet.
-                </h3>
+                <h3><%=: app_name %>, Build: <%=: build_id %> </h3>
                 <div class="row clearfix">
             <div class="col-md-4 column">
-              <img alt="140x140" src="http://lorempixel.com/340/340/" />
+                <a class="download btn btn-primary btn-lg" role="button" href="itms-services://?action=download-manifest&url=<%=: encodeURI(app_url)%>">
+                    <img src="//chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= encodeURI('itms-services://?action=download-manifest&url=' + app_url) %>"> Download Now
+                </a>
             </div>
 
                     <div class="col-md-8 column">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-
+                        <p><%=: app_description %></p>
                         <ul>
                           <% for(var i=0; i < logs.length; i++) { %>
-                              <li><%=: logs[i]['hash'] %> <%=: logs[i]['msg'] %> <%=: logs[i]['author'] %></li><% } %>
+                              <li><%=: logs[i]['hash'] |truncate:5 %> <%=: logs[i]['msg'] %> <%=: logs[i]['author'] %></li><% } %>
                         </ul>
                     </div>
                 </div>

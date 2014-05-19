@@ -37,6 +37,7 @@ module.exports = function(grunt) {
            branch      : 'master',
            app_name    : 'Digital Club Card',
            bundle_id   : 'com.geo.bla',
+           app_description: 'Brief description of the application would go here'
        },
     },
 
