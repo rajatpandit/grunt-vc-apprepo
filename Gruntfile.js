@@ -29,15 +29,16 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    apprepo            : {
-       options         : {
-           http_url    : 'http://dc.ios.localhost/',
-           repo_path   : '/home/rp/repo-generator/repo-generator',
-           output_path : '/var/www/apps/',
-           branch      : 'master',
-           app_name    : 'Digital Club Card',
-           bundle_id   : 'com.geo.bla',
-           app_description: 'Brief description of the application would go here'
+    apprepo                : {
+       options             : {
+           http_url        : 'http://dc.ios.localhost/',
+           repo_path       : '/home/rp/repo-generator/repo-generator',
+           output_path     : '/var/www/apps/',
+           branch          : 'master',
+           app_name        : 'Digital Club Card',
+           bundle_id       : 'com.geo.bla',
+           platform        : 'ios',
+           app_description : 'Brief description of the application would go here'
        },
     },
 
