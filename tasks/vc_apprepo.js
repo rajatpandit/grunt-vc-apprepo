@@ -12,15 +12,16 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerTask('apprepo', 'Plugin to create landing page for ios and android apps and push it to a remote server', function(build_id, start_commit, end_commit, binary_name) {
+  grunt.registerTask('apprepo', 'Plugin to create landing page for ios and android apps and push it to a remote server', function(build_id, start_commit, end_commit) {
     var options = this.options(),
-        git     = '/usr/bin/git',
+        git     = 'git',
         done    = this.async(),
         exec    = require('child_process').exec,
         ejs     = require('ejs'),
         async   = require('async'),
         fs      = require('fs'),
-        command = 'cd /home/rp/repo-generator/repo-generator/ && git log ' + start_commit + '..' + end_commit + ' --pretty="%H|%ae|%s"',
+        command = 'cd ' + options['repo_path'] + ' && git log ' + start_commit + '..' + end_commit + ' --pretty="%H|%ae|%s"',
+
 
         parse_commits = function(commits) {
             var logs  = [];
@@ -29,9 +30,9 @@ module.exports = function(grunt) {
             commits.forEach(function(commit) {
                 commit = commit.split('|');
                 var single_commit = {
-                    'hash': commit[0],
-                    'author': commit[1],
-                    'msg': commit[2]
+                    'hash'   : commit[0],
+                    'author' : commit[1],
+                    'msg'    : commit[2]
                 };
                 logs.push(single_commit);
             });
