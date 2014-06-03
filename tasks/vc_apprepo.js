@@ -12,7 +12,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerTask('apprepo', 'Plugin to create landing page for ios and android apps and push it to a remote server', function(build_id, start_commit, end_commit) {
+  grunt.registerTask('apprepo', 'Plugin to create landing page for ios and android apps and push it to a remote server', function(build_id, start_commit, end_commit,build_name, version) {
     var options = this.options(),
         git     = 'git',
         done    = this.async(),
@@ -64,9 +64,11 @@ module.exports = function(grunt) {
 
             // get parse the output of the manifest
             var manifest_output = ejs.render(fs.readFileSync(manifest_template, 'utf-8'), {
-                app_url   : options['http_url'] + build_id,
-                bundle_id : options['bundle_id'],
-                app_name  : options['app_name']
+                app_url    : options['http_url'] + build_id,
+                bundle_id  : options['bundle_id'],
+                app_name   : options['app_name'],
+                build_name : build_name,
+                version    : version
             });
 
             var html_output = ejs.render(fs.readFileSync(html_template, 'utf-8'), {

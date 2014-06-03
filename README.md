@@ -43,8 +43,16 @@ grunt.initConfig({
 ```
 
 ### Usage Examples
+syntax:
+apprepo:<build-id>:<start-commit-id>:<end-commit-id>:<name-of-the-app>:<version-of-app>
+
+
+- name of the app: assuming that the file is going to be placed in the same level the manifest.plist file
+- version-of-app: is the version in the ios app
+
+
 ```
-> grunt apprepo:build1234:60a3dea9:7410837d
+> grunt apprepo:build1234:60a3dea9:7410837d:my-app-2.0.0+build1234.ipa:2.0.0+build1234
 Running "apprepo:build1234:60a3dea9:7410837d" (apprepo) task
 Found the following change logs
 ---
@@ -57,8 +65,6 @@ Found the following change logs
 Wrote updated landing page at /var/www/apps/index.html
 Wrote updated manifest file at /var/www/apps/manifest.plist
 ```
-
-
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).

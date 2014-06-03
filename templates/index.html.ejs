@@ -35,8 +35,8 @@
                 <h3><%=: app_name %>, Build: <%=: build_id %> </h3>
                 <div class="row clearfix">
             <div class="col-md-4 column download">
-                <a  role="button" href="itms-services://?action=download-manifest&url=<%=: encodeURIComponent(app_url) + '/manifest.plist'%>">
-                    <img src="//chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= encodeURIComponent('itms-services://?action=download-manifest&url=' + app_url + '/manifest.plist') %>">
+                <a  role="button" href="itms-services://?action=download-manifest&url=<%=: encodeURIComponent(app_url.trim()) + '/manifest.plist'%>">
+                    <img src="//chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%= encodeURIComponent('itms-services://?action=download-manifest&url=' + app_url.trim() + '/manifest.plist') %>">
                     <p>Download Now</p>
                 </a>
             </div>
