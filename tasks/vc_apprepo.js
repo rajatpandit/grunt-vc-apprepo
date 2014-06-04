@@ -60,23 +60,28 @@ module.exports = function(grunt) {
                 html_template     = template_path + 'index.html.ejs',
                 html_file         = options['output_path'] + 'index.html',
                 manifest_template = template_path + 'manifest.plist.ejs',
-                manifest_file     = options['output_path'] + 'manifest.plist';
+                manifest_file     = options['output_path'] + 'manifest.plist',
+                manifest_output   = '';
 
-            // get parse the output of the manifest
-            var manifest_output = ejs.render(fs.readFileSync(manifest_template, 'utf-8'), {
-                app_url    : options['http_url'] + build_id,
-                bundle_id  : options['bundle_id'],
-                app_name   : options['app_name'],
-                build_name : build_name,
-                version    : version
-            });
+            if ('ios' === options['platform']) {
+                // get parse the output of the manifest
+                manifest_output = ejs.render(fs.readFileSync(manifest_template, 'utf-8'), {
+                    app_url    : options['http_url'] + build_id,
+                    bundle_id  : options['bundle_id'],
+                    app_name   : options['app_name'],
+                    build_name : build_name,
+                    version    : version
+                });
+            }
 
             var html_output = ejs.render(fs.readFileSync(html_template, 'utf-8'), {
                 app_url         : options['http_url'] + build_id,
                 build_id        : build_id,
                 app_description : options['app_description'],
                 app_name        : options['app_name'],
-                logs            : logs
+                logs            : logs,
+                platform        : options['platform'],
+                build_name      : build_name
             });
             fs.writeFile(html_file, html_output, function(err) {
                 if (err) {
@@ -85,13 +90,15 @@ module.exports = function(grunt) {
                     grunt.log.writeln('Wrote updated landing page at %s', html_file);
                 }
             });
-            fs.writeFile(manifest_file, manifest_output, function(err) {
-                if (err) {
-                    grunt.log.writeln('Error writing to %s', manifest_file);
-                } else {
-                    grunt.log.writeln('Wrote updated manifest file at %s', manifest_file);
-                }
-            });
+            if ('ios' === options['platform'])  {
+                fs.writeFile(manifest_file, manifest_output, function(err) {
+                    if (err) {
+                        grunt.log.writeln('Error writing to %s', manifest_file);
+                    } else {
+                        grunt.log.writeln('Wrote updated manifest file at %s', manifest_file);
+                    }
+                });
+            }
     }]);
 
     });

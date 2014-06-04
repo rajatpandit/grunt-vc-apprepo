@@ -19,8 +19,8 @@ module.exports = function(grunt) {
            output_path     : '/var/www/apps/',
            branch          : 'master',
            app_name        : 'Digital Club Card',
-           bundle_id       : 'com.geo.bla',
-           platform        : 'ios',
+           //bundle_id       : 'com.geo.bla',
+           platform        : 'droid', // ios
            app_description : 'Brief description of the application would go here'
        },
     },
