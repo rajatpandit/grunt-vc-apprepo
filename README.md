@@ -29,6 +29,7 @@ In your project's Gruntfile, add a section named `vc_apprepo` to the data object
 grunt.initConfig({
   apprepo: {
     options: {
+        title           : 'Some page title',                                    // added page title for the landing page
         http_url        : 'http://dc.ios.localhost/',                           // URL where the file will be hosted, to be used in the template/manifest.plist file
         repo_path       : '/home/rp/repo-generator/repo-generator',             // path of the git repo
         output_path     : '/var/www/apps/',                                     // where the html files need to be generated

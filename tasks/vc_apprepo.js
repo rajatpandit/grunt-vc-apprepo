@@ -75,6 +75,7 @@ module.exports = function(grunt) {
             }
 
             var html_output = ejs.render(fs.readFileSync(html_template, 'utf-8'), {
+                title           : options['title'],
                 app_url         : options['http_url'] + build_id,
                 build_id        : build_id,
                 app_description : options['app_description'],

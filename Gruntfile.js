@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     apprepo                : {
        options             : {
+           title           : 'Build page for Digital Clubcard',
            http_url        : 'http://dc.ios.localhost/',
            repo_path       : '/home/rp/repo-generator/repo-generator',
            output_path     : '/var/www/apps/',
