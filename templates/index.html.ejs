@@ -42,7 +42,7 @@
                 </a>
                 <%} else {%>
                     <a  role="button" href="<%=: build_name %>">
-                        <img src="//chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%=: encodeURIComponent(app_url.trim())  + build_name %>">
+                        <img src="//chart.googleapis.com/chart?chs=150x150&cht=qr&chl=<%=: encodeURIComponent(app_url.trim())  + '/' + build_name %>">
                     <p>Download Now</p>
                 </a>
                 <%} %>

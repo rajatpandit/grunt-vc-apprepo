@@ -1,7 +1,7 @@
 {
   "name": "grunt-vc-apprepo",
   "description": "Plugin to create landing page for ios and android apps and push it to a remote server",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://github.com/rajatpandit/grunt-vc-apprepo",
   "author": {
     "name": "Rajat Pandit",
